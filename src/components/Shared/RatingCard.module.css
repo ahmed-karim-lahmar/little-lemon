@@ -1,0 +1,22 @@
+.card {
+  width: 230px;
+  background-color: var(--highlight-color-1);
+  padding: 16px 24px;
+  border-radius: var(--border-radius);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 45px 16px;
+}
+
+.userpic {
+  height: 80px;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.stars {
+  display: flex;
+}
