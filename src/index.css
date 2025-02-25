@@ -1,0 +1,110 @@
+/* Default font and theme colors */
+:root {
+  --primary-color-1: #495e57;
+  --primary-color-2: #f4ce14;
+  --secondary-color-1: #ee9972;
+  --secondary-color-2: #fbdabb;
+  --highlight-color-1: #edefee;
+  --highlight-color-2: #333333;
+  --white: #ffffff;
+  --black: #000000;
+
+  --border-radius: 16px;
+
+  font-family: "Karla", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Resets start */
+/* html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+img {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+/* Resets end */
+
+/* Typography start */
+.display-title {
+  font-family: "Markazi Text", serif;
+  font-weight: 500;
+  font-size: 4rem;
+  font-style: normal;
+}
+
+.sub-title {
+  font-family: "Markazi Text", serif;
+  font-weight: 400;
+  font-size: 2.5rem;
+  font-style: normal;
+}
+
+.lead-text {
+  font-family: "Karla", serif;
+  font-weight: 500;
+  font-size: 1.125rem;
+  font-style: normal;
+}
+
+.section-text {
+  font-family: "Karla", serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.section-category {
+  font-family: "Karla", serif;
+  font-weight: 800;
+  font-size: 1rem;
+  font-style: normal;
+}
+
+.card-title {
+  font-family: "Karla", serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  font-style: normal;
+}
+
+.paragraph-text {
+  font-family: "Karla", serif;
+  font-weight: 400;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.highlight-text {
+  font-family: "Karla", serif;
+  font-weight: 500;
+  font-size: 1rem;
+  font-style: normal;
+}
+
+/* Typography end */
+
+body {
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 900px) {
+  body {
+    max-width: 900px;
+  }
+}
