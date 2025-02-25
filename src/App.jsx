@@ -1,10 +1,10 @@
-import Hero from "@components/hero-section/Hero";
 import "./App.css";
-import Header from "@components/navigation-bar/Header";
-import Nav from "@components/navigation-bar/Nav";
+import { Header, Nav } from "@components/Header";
+import Hero from "@components/Hero";
+import Highlights from "@components/Highlights";
+import Testimonials from "@components/Testimonials";
+import About from "@components/About";
 import Footer from "@components/Footer";
-import Highlights from "@components/highlights/Highlights";
-import Testimonials from "@components/testimonials/Testimonials";
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
         <Hero />
         <Highlights />
         <Testimonials />
+        <About />
       </main>
       <Footer />
     </>

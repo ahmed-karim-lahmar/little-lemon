@@ -1,0 +1,4 @@
+/* Remove horizontal scroll caused by before bgcolor in hero */
+body {
+  overflow-x: hidden;
+}

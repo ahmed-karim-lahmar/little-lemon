@@ -1,0 +1,56 @@
+.card {
+  width: 230px;
+  min-width: 230px;
+  height: 465px;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  background-color: var(--highlight-color-1);
+  overflow: hidden;
+  padding: 0 16px 16px 16px;
+  /* gap: 26px; */
+}
+.card > * {
+  margin: 0;
+}
+
+.card img {
+  height: 182px;
+  margin-left: -16px;
+  margin-right: -16px;
+}
+
+.card div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card p {
+  flex: 1;
+}
+
+.price {
+  color: var(--secondary-color-1);
+}
+
+.card a {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  /* margin-top: auto; */
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  text-decoration: none;
+  color: var(--highlight-color-2);
+}
+
+.card a:hover {
+  text-decoration: revert;
+}
+
+.card a img {
+  width: 24px;
+  margin-top: 3px;
+}

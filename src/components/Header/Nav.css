@@ -1,0 +1,21 @@
+nav {
+  margin-left: auto;
+  flex: 1;
+  padding-left: 80px;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+}
+
+nav a:hover {
+  text-decoration: revert;
+}
