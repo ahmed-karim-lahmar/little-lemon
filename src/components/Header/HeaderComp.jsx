@@ -4,7 +4,9 @@ import "./HeaderComp.css";
 const Header = ({ children }) => {
   return (
     <header>
-      <img src={logo} alt="Logo" />
+      <a href="#">
+        <img src={logo} alt="Logo" />
+      </a>
       {children}
     </header>
   );

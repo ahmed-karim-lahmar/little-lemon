@@ -22,8 +22,24 @@ nav a {
   color: black;
 }
 
-nav a:hover {
+.current {
   text-decoration: revert;
+  text-decoration-color: var(--primary-color-2);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  text-decoration-style: wavy;
+}
+
+nav li:hover {
+  transform: scale(1.08);
+}
+
+nav li:hover a {
+  text-decoration: revert;
+  text-decoration-color: var(--primary-color-2);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  text-decoration-style: wavy;
 }
 
 @media screen and (max-width: 900px) {
