@@ -32,8 +32,7 @@
 }
 
 .card {
-  min-width: 210px;
-  flex: 1;
+  flex: 1 0 300px;
 }
 
 @media screen and (max-width: 900px) {
