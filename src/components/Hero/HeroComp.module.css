@@ -47,6 +47,7 @@
   object-fit: cover;
   transform: translate(29%, 70px);
   border-radius: var(--border-radius);
+  box-shadow: var(--image-shadow);
 }
 
 @media screen and (max-width: 900px) {

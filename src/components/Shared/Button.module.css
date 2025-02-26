@@ -4,4 +4,5 @@
   padding: 14px 44px;
   border: none;
   border-radius: var(--border-radius);
+  box-shadow: var(--button-shadow);
 }

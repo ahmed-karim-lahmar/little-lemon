@@ -8,6 +8,7 @@
   background-color: var(--highlight-color-1);
   overflow: hidden;
   padding: 0 16px 16px 16px;
+  box-shadow: var(--card-shadow);
   /* gap: 26px; */
 }
 .card > * {
