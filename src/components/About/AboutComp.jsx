@@ -1,19 +1,25 @@
-import "./AboutComp.css";
+import styles from "./AboutComp.module.css";
 
 const About = () => {
   return (
-    <section>
+    <section className={`${styles.about}`}>
       <div className="about">
-        <h1>Little Lemon</h1>
-        <h2>Chicago</h2>
-        <p>
-          We are a family owned Mediterranean restaurant, focused on traditional
-          recipes served with a modern twist.
+        <h1 className={`${styles.title} display-title`}>Little Lemon</h1>
+        <h2 className={`${styles.subtitle} sub-title`}>Chicago</h2>
+        <p className={`${styles.description} paragraph-text`}>
+          We are a family owned <br />
+          Mediterranean restaurant, focused on <br />
+          traditional recipes served with a <br />
+          modern twist.
         </p>
       </div>
-      <div className="owners">
-        <img src="" alt="" />
-        <img src="" alt="" />
+      <div className={styles.owners}>
+        {/* <div className={styles.imgWrapper}> */}
+        <img src="/Adrian.png" alt="Adrian's Picture" />
+        <img src="/Mario.png" alt="Mario's Picture" />
+        {/* </div> */}
+        {/* <div className="imgWrapper"> */}
+        {/* </div> */}
       </div>
     </section>
   );
