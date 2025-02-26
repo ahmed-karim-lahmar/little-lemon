@@ -3,3 +3,12 @@ header {
   min-height: 122px;
   align-items: center;
 }
+
+@media screen and (max-width: 900px) {
+  header {
+    min-height: 82px;
+  }
+  header img {
+    margin-left: 24px;
+  }
+}

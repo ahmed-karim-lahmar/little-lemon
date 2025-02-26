@@ -1,5 +1,11 @@
-nav {
+.burger {
+  display: none;
   margin-left: auto;
+  margin-right: 24px;
+  cursor: pointer;
+}
+
+nav {
   flex: 1;
   padding-left: 80px;
 }
@@ -18,4 +24,22 @@ nav a {
 
 nav a:hover {
   text-decoration: revert;
+}
+
+@media screen and (max-width: 900px) {
+  .burger {
+    display: block;
+  }
+
+  nav {
+    display: none;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    text-align: center;
+  }
 }

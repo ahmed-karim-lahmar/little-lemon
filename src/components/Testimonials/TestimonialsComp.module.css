@@ -35,3 +35,14 @@
   min-width: 210px;
   flex: 1;
 }
+
+@media screen and (max-width: 900px) {
+  .testimonials {
+    height: 400px;
+  }
+
+  .title {
+    margin-top: 48px;
+    margin-bottom: 24px;
+  }
+}

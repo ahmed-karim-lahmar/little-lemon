@@ -35,7 +35,7 @@ const Footer = () => {
             <a href="">Address</a>
           </li>
           <li>
-            <a href="">Phone Number</a>
+            <a href="">Phone</a>
           </li>
           <li>
             <a href="">Email</a>
@@ -49,7 +49,7 @@ const Footer = () => {
             <a href="">Address</a>
           </li>
           <li>
-            <a href="">Phone Number</a>
+            <a href="">Phone</a>
           </li>
           <li>
             <a href="">Email</a>
