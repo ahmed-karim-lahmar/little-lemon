@@ -9,10 +9,10 @@ const Hero = () => {
         <h1 className={`display-title ${styles.title}`}>Little Lemon</h1>
         <h2 className={`sub-title ${styles.subtitle}`}>Chicago</h2>
         <p className={`paragraph-text ${styles.description}`}>
-          We are a family owned <br />
-          Mediterranean restaurant, <br />
-          focused on traditional <br />
-          recipes served with a modern <br />
+          <span>We are a family owned </span>
+          <span>Mediterranean restaurant, </span>
+          <span>focused on traditional </span>
+          <span>recipes served with a modern </span>
           twist.
         </p>
         <Button className={styles.cta}>Reserve a table</Button>

@@ -7,9 +7,9 @@ const About = () => {
         <h1 className={`${styles.title} display-title`}>Little Lemon</h1>
         <h2 className={`${styles.subtitle} sub-title`}>Chicago</h2>
         <p className={`${styles.description} paragraph-text`}>
-          We are a family owned <br />
-          Mediterranean restaurant, focused on <br />
-          traditional recipes served with a <br />
+          <span>We are a family owned </span>
+          <span>Mediterranean restaurant, focused on </span>
+          <span>traditional recipes served with a </span>
           modern twist.
         </p>
       </div>
