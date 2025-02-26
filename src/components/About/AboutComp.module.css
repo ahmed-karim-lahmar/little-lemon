@@ -1,6 +1,5 @@
 .about {
   display: flex;
-  /* gap: 32px; */
   justify-content: space-between;
 }
 
@@ -37,12 +36,22 @@
   transform: translate(-70%, -68px);
 }
 
-/* .imgWrapper {
-  border-radius: var(--border-radius);
-  overflow: hidden;
-}
+@media screen and (max-width: 900px) {
+  .about {
+    flex-direction: column;
+    align-items: center;
+  }
 
-.imgWrapper img {
-  display: block;
-  width: 100%;
-} */
+  .title {
+    margin-top: 32px;
+  }
+
+  .owners img:first-child {
+    transform: translateX(15%);
+  }
+
+  .owners img:last-child {
+    transform: translate(-15%, -40%);
+    margin-bottom: -80px;
+  }
+}

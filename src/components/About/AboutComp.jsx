@@ -14,12 +14,8 @@ const About = () => {
         </p>
       </div>
       <div className={styles.owners}>
-        {/* <div className={styles.imgWrapper}> */}
         <img src="/Adrian.png" alt="Adrian's Picture" />
         <img src="/Mario.png" alt="Mario's Picture" />
-        {/* </div> */}
-        {/* <div className="imgWrapper"> */}
-        {/* </div> */}
       </div>
     </section>
   );
