@@ -103,8 +103,19 @@ img {
 
 /* Typography end */
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 body {
   margin: 0 auto;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 900px) {
