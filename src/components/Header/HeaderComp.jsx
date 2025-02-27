@@ -1,12 +1,13 @@
 import logo from "@assets/logo.svg";
 import "./HeaderComp.css";
+import { Link } from "react-router";
 
 const Header = ({ children }) => {
   return (
     <header>
-      <a href="#">
+      <Link to={"/"}>
         <img src={logo} alt="Logo" />
-      </a>
+      </Link>
       {children}
     </header>
   );

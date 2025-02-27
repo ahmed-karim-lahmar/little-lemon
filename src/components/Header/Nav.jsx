@@ -1,6 +1,8 @@
+import { NavLink } from "react-router";
 import "./Nav.css";
 import burger from "@assets/hamburger-menu.svg";
 const Nav = () => {
+  const style = ({ isActive }) => (isActive ? "current" : "");
   return (
     <>
       <div className="burger">
@@ -9,24 +11,34 @@ const Nav = () => {
       <nav>
         <ul>
           <li>
-            <a href="#home" className="current">
+            <NavLink to="/" className={style}>
               Home
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#about">About</a>
+            <NavLink to="/about" className={style}>
+              About
+            </NavLink>
           </li>
           <li>
-            <a href="#menu">Menu</a>
+            <NavLink to="/menu" className={style}>
+              Menu
+            </NavLink>
           </li>
           <li>
-            <a href="#reservations">Reservations</a>
+            <NavLink to="/booking" className={style}>
+              Reservations
+            </NavLink>
           </li>
           <li>
-            <a href="#order-online">Order online</a>
+            <NavLink to="/order-online" className={style}>
+              Order online
+            </NavLink>
           </li>
           <li>
-            <a href="#login">Login</a>
+            <NavLink to="/login" className={style}>
+              Login
+            </NavLink>
           </li>
         </ul>
       </nav>

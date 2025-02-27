@@ -1,10 +1,10 @@
 import "./App.css";
 import { Header, Nav } from "@components/Header";
-import Hero from "@components/Hero";
-import Highlights from "@components/Highlights";
-import Testimonials from "@components/Testimonials";
-import About from "@components/About";
 import Footer from "@components/Footer";
+import { Route, Routes } from "react-router";
+import HomePage from "@components/HomePage";
+import BookingPage from "@components/BookingPage";
+import NotFound from "@components/NotFound";
 
 function App() {
   return (
@@ -13,10 +13,11 @@ function App() {
         <Nav />
       </Header>
       <main>
-        <Hero />
-        <Highlights />
-        <Testimonials />
-        <About />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/booking" element={<BookingPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
       <Footer />
     </>
