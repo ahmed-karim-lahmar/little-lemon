@@ -1,0 +1,29 @@
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.largeText {
+  margin-bottom: 0;
+  font-size: 4rem;
+  color: var(--primary-color-2);
+}
+
+.smallText {
+  text-align: center;
+  margin-top: -16px;
+  margin-bottom: 0;
+  color: var(--primary-color-1);
+}
+
+.descriptionText {
+  text-align: center;
+  color: var(--highlight-color-2);
+}
+
+.homeBtn {
+  margin-top: 48px;
+  width: max(300px, 40%);
+}
