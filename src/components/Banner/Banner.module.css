@@ -1,0 +1,48 @@
+.banner {
+  position: relative;
+  height: 375px;
+  background-image: url("/reservation-bg.png");
+}
+
+.banner img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.banner::before {
+  content: "";
+  background-color: var(--highlight-color-2);
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  z-index: -1;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: var(--primary-color-2);
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--highlight-color-1);
+  margin: 0;
+}
+
+.scrollToFormBtn {
+  margin-top: 48px;
+}

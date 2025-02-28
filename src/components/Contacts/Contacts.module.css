@@ -1,0 +1,24 @@
+.contacts {
+  flex: 1;
+  position: relative;
+  background-image: url("/reservation-contacts.png");
+  background-position: center;
+  background-size: cover;
+  padding-bottom: 48px;
+}
+
+.title {
+  color: var(--highlight-color-1);
+  text-align: center;
+  margin-top: 86px;
+  margin-bottom: 72px;
+  padding: 0 16px;
+}
+
+.info {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: stretch;
+}

@@ -13,6 +13,8 @@
   --image-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.25);
   --card-shadow: 2px 4px 16px 0px rgba(0, 0, 0, 0.25);
 
+  --overlay-color: #00000095;
+
   --border-radius: 16px;
 
   font-family: "Karla", serif;
@@ -102,6 +104,11 @@ img {
 }
 
 /* Typography end */
+
+.overlayed {
+  border-image: fill 1
+    linear-gradient(var(--overlay-color), var(--overlay-color));
+}
 
 html,
 body,
