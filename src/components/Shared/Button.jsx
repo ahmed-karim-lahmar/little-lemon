@@ -1,8 +1,24 @@
 import styles from "./Button.module.css";
 
-const Button = ({ className, children }) => {
+const VARIANT_CLASSES = {
+  primary: styles.primary,
+  outlined: styles.outlined,
+  disabled: styles.disabled,
+};
+const Button = ({
+  onClick,
+  className,
+  variant = "primary",
+  children,
+  ...props
+}) => {
+  const variantClass = VARIANT_CLASSES[variant];
   return (
-    <button className={`lead-text ${styles.cta} ${className}`}>
+    <button
+      className={`lead-text ${styles.cta} ${variantClass} ${className}`}
+      onClick={onClick}
+      {...props}
+    >
       {children}
     </button>
   );
