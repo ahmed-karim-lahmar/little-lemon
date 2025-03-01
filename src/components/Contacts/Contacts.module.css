@@ -5,6 +5,8 @@
   background-position: center;
   background-size: cover;
   padding-bottom: 48px;
+  padding-left: 62px;
+  padding-right: 68px;
 }
 
 .title {
@@ -20,5 +22,11 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  align-items: stretch;
+}
+
+@media screen and (max-width: 900px) {
+  .contacts {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }

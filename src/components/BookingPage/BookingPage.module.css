@@ -4,6 +4,6 @@
 
 @media screen and (max-width: 900px) {
   .content {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 }
