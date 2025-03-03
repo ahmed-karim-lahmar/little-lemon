@@ -17,6 +17,9 @@ const BookingForm = ({ availableTimes, setAvailableTimes }) => {
 
   const handleChange = (e) => {
     const { id, name, value, type, checked } = e.target;
+    if (name === "date") {
+      setAvailableTimes({ type: "updateTimes", payload: value });
+    }
     setForm((prevState) => ({
       ...prevState,
       [name]: type === "radio" ? (checked ? value : prevState[name]) : value,
