@@ -31,8 +31,10 @@ const BookingForm = ({ availableTimes, setAvailableTimes }) => {
   };
   return (
     <section id="#reservation" className={styles.reservation}>
-      <h2 className={`sub-title ${styles.title}`}>Table Reservation</h2>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <h2 id="form-title" className={`sub-title ${styles.title}`}>
+        Table Reservation
+      </h2>
+      <form aria-labelledby="form-title" onSubmit={(e) => e.preventDefault()}>
         <fieldset className={styles.row}>
           <div className={styles.formGroup}>
             <label className={`section-category`} htmlFor="firstname">
@@ -45,6 +47,8 @@ const BookingForm = ({ availableTimes, setAvailableTimes }) => {
               placeholder="Enter your Firstname"
               value={form.firstname}
               onChange={handleChange}
+              required
+              aria-required="true"
             />
           </div>
           <div className={styles.formGroup}>
@@ -58,6 +62,8 @@ const BookingForm = ({ availableTimes, setAvailableTimes }) => {
               placeholder="Enter your Lastname"
               value={form.lastname}
               onChange={handleChange}
+              required
+              aria-required="true"
             />
           </div>
         </fieldset>
@@ -74,6 +80,8 @@ const BookingForm = ({ availableTimes, setAvailableTimes }) => {
               placeholder="Enter your Email"
               value={form.email}
               onChange={handleChange}
+              required
+              aria-required="true"
             />
           </div>
         </fieldset>
@@ -90,6 +98,8 @@ const BookingForm = ({ availableTimes, setAvailableTimes }) => {
               options={availableTimes}
               value={form.time}
               onChange={handleChange}
+              required
+              aria-required="true"
             />
           </div>
           <div className={styles.formGroup}>
@@ -102,6 +112,8 @@ const BookingForm = ({ availableTimes, setAvailableTimes }) => {
               name="date"
               value={form.date}
               onChange={handleChange}
+              required
+              aria-required="true"
             />
           </div>
         </fieldset>
@@ -118,6 +130,8 @@ const BookingForm = ({ availableTimes, setAvailableTimes }) => {
               placeholder="Select Not implemented"
               value={form.guests}
               onChange={handleChange}
+              required
+              aria-required="true"
             />
           </div>
           <div className={styles.formGroup}>
@@ -147,6 +161,8 @@ const BookingForm = ({ availableTimes, setAvailableTimes }) => {
                 label="Indoor"
                 checked={form.seating === "indoor"}
                 onChange={handleChange}
+                required
+                aria-required="true"
               />
 
               <FormInput
@@ -157,6 +173,8 @@ const BookingForm = ({ availableTimes, setAvailableTimes }) => {
                 label="Outdoor"
                 checked={form.seating === "outdoor"}
                 onChange={handleChange}
+                required
+                aria-required="true"
               />
             </div>
           </div>
