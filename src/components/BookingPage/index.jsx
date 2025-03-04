@@ -7,14 +7,16 @@ import { useReducer } from "react";
 export const updateTimes = (state, action) => {
   switch (action.type) {
     case "updateTimes":
-      return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+      return fetchAPI(new Date(action.payload));
     default:
       return state;
   }
 };
 
 export const initializeTimes = () => {
-  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+  const date = new Date();
+  const data = fetchAPI(date);
+  return data;
 };
 
 const BookingPage = () => {
