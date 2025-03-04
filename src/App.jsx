@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router";
 import HomePage from "@components/HomePage";
 import BookingPage from "@components/BookingPage";
 import NotFound from "@components/NotFound";
+import ConfirmedBooking from "@components/ConfirmedBooking";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/booking" element={<BookingPage />} />
+          <Route path="/confirmed-booking" element={<ConfirmedBooking />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

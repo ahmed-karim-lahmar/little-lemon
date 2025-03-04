@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, FormInput } from "@components/Shared";
 import styles from "./BookingForm.module.css";
 
-const BookingForm = ({ availableTimes, setAvailableTimes }) => {
+const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
   const [form, setForm] = useState({
     firstname: "",
     lastname: "",
@@ -26,15 +26,17 @@ const BookingForm = ({ availableTimes, setAvailableTimes }) => {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log("Reservation submitted", form);
+    onSubmit(form);
   };
   return (
     <section id="#reservation" className={styles.reservation}>
       <h2 id="form-title" className={`sub-title ${styles.title}`}>
         Table Reservation
       </h2>
-      <form aria-labelledby="form-title" onSubmit={(e) => e.preventDefault()}>
+      <form aria-labelledby="form-title" onSubmit={(e) => handleSubmit(e)}>
         <fieldset className={styles.row}>
           <div className={styles.formGroup}>
             <label className={`section-category`} htmlFor="firstname">

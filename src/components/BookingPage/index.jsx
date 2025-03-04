@@ -3,6 +3,7 @@ import Contacts from "@components/Contacts";
 import BookingForm from "@components/BookingForm";
 import styles from "./BookingPage.module.css";
 import { useReducer } from "react";
+import { useNavigate } from "react-router";
 
 export const updateTimes = (state, action) => {
   switch (action.type) {
@@ -20,6 +21,15 @@ export const initializeTimes = () => {
 };
 
 const BookingPage = () => {
+  const navigate = useNavigate();
+
+  const submitForm = (formData) => {
+    const result = submitAPI(formData);
+    if (result) {
+      navigate("/confirmed-booking");
+    }
+  };
+
   const [availableTimes, setAvailableTimes] = useReducer(
     updateTimes,
     [],
@@ -34,6 +44,7 @@ const BookingPage = () => {
         <BookingForm
           availableTimes={availableTimes}
           setAvailableTimes={setAvailableTimes}
+          onSubmit={submitForm}
         />
       </section>
     </>
