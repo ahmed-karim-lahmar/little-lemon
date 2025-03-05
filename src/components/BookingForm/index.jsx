@@ -199,6 +199,7 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
         </fieldset>
 
         <Button
+          data-testid="submit-btn"
           className={styles.submitBtn}
           type="submit"
           onClick={handleSubmit}
