@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button, FormInput } from "@components/Shared";
 import styles from "./BookingForm.module.css";
+import guests from "@assets/guests.svg";
+import occasion from "@assets/occasion.svg";
 
 const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
   const [form, setForm] = useState({
@@ -15,11 +17,35 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
     request: "",
   });
 
+  const guestsOptions = [
+    { label: "1", value: "1" },
+    { label: "2", value: "2" },
+    { label: "3", value: "3" },
+    { label: "4", value: "4" },
+    { label: "5", value: "5" },
+    { label: "More than 5", value: "more than 5" },
+  ];
+
+  const handleChangeGuests = (e) => {
+    console.log(e);
+  };
+
+  const occasionOptions = [
+    { label: "Birthday", value: "Birthday" },
+    { label: "Anniversary", value: "Anniversary" },
+    { label: "Engagement", value: "Engagement" },
+  ];
+
+  const hangleChangeOccasion = (e) => {
+    console.log(e);
+  };
+
   const handleChange = (e) => {
-    const { id, name, value, type, checked } = e.target;
+    const { name, value, type, checked } = e.target;
     if (name === "date") {
       setAvailableTimes({ type: "updateTimes", payload: value });
     }
+
     setForm((prevState) => ({
       ...prevState,
       [name]: type === "radio" ? (checked ? value : prevState[name]) : value,
@@ -126,14 +152,15 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
               Number of Guests:
             </label>
             <FormInput
+              icon={guests}
               type="guests"
               id="guests"
               name="guests"
-              placeholder="Select Not implemented"
               value={form.guests}
-              onChange={handleChange}
+              onChange={handleChangeGuests}
               required
               aria-required="true"
+              options={guestsOptions}
             />
           </div>
           <div className={styles.formGroup}>
@@ -141,12 +168,14 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
               Occasion:
             </label>
             <FormInput
+              icon={occasion}
               type="occasion"
               id="occasion"
               name="occasion"
-              placeholder="Select Not implemented"
               value={form.occasion}
-              onChange={handleChange}
+              onChange={hangleChangeOccasion}
+              aria-required="false"
+              options={occasionOptions}
             />
           </div>
         </fieldset>

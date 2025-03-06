@@ -1,3 +1,4 @@
+import CustomSelect from "./CustomSelect";
 import styles from "./FormInput.module.css";
 
 const Input = ({ type, className, ...props }) => {
@@ -46,6 +47,30 @@ const Input = ({ type, className, ...props }) => {
             </option>
           ))}
         </select>
+      );
+
+    case "guests":
+      return (
+        <CustomSelect
+          inputIcon={props.icon || null}
+          options={props.options}
+          placeHolder="Number of guests"
+          onChange={props.handleChange}
+          className={className}
+          {...props}
+        />
+      );
+
+    case "occasion":
+      return (
+        <CustomSelect
+          inputIcon={props.icon || null}
+          options={props.options}
+          placeHolder="Occasion"
+          onChange={props.handleChange}
+          className={className}
+          {...props}
+        />
       );
     default:
       return <input type={inputType} className={className} {...props} />;
