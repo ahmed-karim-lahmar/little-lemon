@@ -15,7 +15,9 @@ const Button = ({
   const variantClass = VARIANT_CLASSES[variant];
   return (
     <button
-      className={`lead-text ${styles.cta} ${variantClass} ${className}`}
+      className={`lead-text ${styles.cta} ${variantClass} ${className} ${
+        props.disabled && styles.disabled
+      }`}
       onClick={onClick}
       {...props}
     >
