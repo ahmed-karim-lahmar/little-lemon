@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, FormInput } from "@components/Shared";
 import styles from "./BookingForm.module.css";
 import guests from "@assets/guests.svg";
 import occasion from "@assets/occasion.svg";
+import time from "@assets/time.svg";
 
 const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
   const [form, setForm] = useState({
@@ -36,7 +37,22 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
     { label: "Engagement", value: "Engagement" },
   ];
 
-  const hangleChangeOccasion = (e) => {
+  const handleChangeOccasion = (e) => {
+    console.log(e);
+  };
+
+  const [timeOptions, setTimeOptions] = useState([]);
+
+  useEffect(() => {
+    setTimeOptions(
+      availableTimes.map((time) => ({
+        label: time,
+        value: time,
+      }))
+    );
+  }, [availableTimes]);
+
+  const handleChangeTime = (e) => {
     console.log(e);
   };
 
@@ -120,12 +136,13 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
               Time:
             </label>
             <FormInput
+              icon={time}
               type="time"
               id="time"
               name="time"
-              options={availableTimes}
+              options={timeOptions}
               value={form.time}
-              onChange={handleChange}
+              onChange={handleChangeTime}
               required
               aria-required="true"
             />
@@ -173,7 +190,7 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
               id="occasion"
               name="occasion"
               value={form.occasion}
-              onChange={hangleChangeOccasion}
+              onChange={handleChangeOccasion}
               aria-required="false"
               options={occasionOptions}
             />

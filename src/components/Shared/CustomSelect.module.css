@@ -62,6 +62,7 @@
   position: absolute;
   margin-top: 8px;
   cursor: pointer;
+  z-index: 2;
 }
 
 .dropdownItem {

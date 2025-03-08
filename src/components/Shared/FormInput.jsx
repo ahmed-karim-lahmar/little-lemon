@@ -40,13 +40,14 @@ const Input = ({ type, className, ...props }) => {
 
     case "time":
       return (
-        <select className={className} {...props}>
-          {props.options.map((option, index) => (
-            <option value={option} key={index}>
-              {option}
-            </option>
-          ))}
-        </select>
+        <CustomSelect
+          inputIcon={props.icon || null}
+          options={props.options}
+          placeHolder="Choose time"
+          onChange={props.handleChange}
+          className={className}
+          {...props}
+        />
       );
 
     case "guests":

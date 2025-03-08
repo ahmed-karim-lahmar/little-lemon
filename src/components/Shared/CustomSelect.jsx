@@ -103,10 +103,10 @@ const CustomSelect = ({
       </div>
       {showMenu && (
         <div className={`${styles.dropdownMenu}`}>
-          {options.map((option) => (
+          {options.map((option, index) => (
             <div
               onClick={() => onItemClick(option)}
-              key={option.value}
+              key={`${option.value}-${index}`}
               className={`${styles.dropdownItem} ${
                 isSelected(option) && styles.selected
               }`}
