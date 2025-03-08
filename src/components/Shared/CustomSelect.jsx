@@ -82,6 +82,8 @@ const CustomSelect = ({
         ref={inputRef}
         onClick={handleInputClick}
         className={styles.dropdownInput}
+        tabIndex={0}
+        {...props}
       >
         {inputIcon && (
           <div className={styles.dropdownInputIcon}>

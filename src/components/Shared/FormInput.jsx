@@ -1,7 +1,7 @@
 import CustomSelect from "./CustomSelect";
 import styles from "./FormInput.module.css";
 
-const Input = ({ type, className, ...props }) => {
+const Input = ({ field, type, className, onBlur, ...props }) => {
   const validTypes = [
     "textarea",
     "email",
@@ -19,17 +19,20 @@ const Input = ({ type, className, ...props }) => {
 
   switch (inputType) {
     case "textarea":
-      return <textarea className={className} {...props} />;
+      return (
+        <textarea {...field} className={className} onBlur={onBlur} {...props} />
+      );
     case "radio":
       return (
         <div className={styles.radio}>
           <input
+            {...field}
             className={styles.radioInput}
             type={inputType}
             id={props.id}
-            name={props.name}
+            name={field.name}
             value={props.value}
-            checked={props.checked}
+            onBlur={onBlur}
             {...props}
           />
           <label className={`paragraph-text`} htmlFor={props.id}>
@@ -39,42 +42,30 @@ const Input = ({ type, className, ...props }) => {
       );
 
     case "time":
-      return (
-        <CustomSelect
-          inputIcon={props.icon || null}
-          options={props.options}
-          placeHolder="Choose time"
-          onChange={props.handleChange}
-          className={className}
-          {...props}
-        />
-      );
-
     case "guests":
-      return (
-        <CustomSelect
-          inputIcon={props.icon || null}
-          options={props.options}
-          placeHolder="Number of guests"
-          onChange={props.handleChange}
-          className={className}
-          {...props}
-        />
-      );
-
     case "occasion":
       return (
         <CustomSelect
           inputIcon={props.icon || null}
           options={props.options}
-          placeHolder="Occasion"
+          placeHolder={
+            inputType === "time"
+              ? "Choose time"
+              : inputType === "guests"
+              ? "Number of guests"
+              : "Occasion"
+          }
           onChange={props.handleChange}
           className={className}
+          onBlur={onBlur}
           {...props}
         />
       );
+
     default:
-      return <input type={inputType} className={className} {...props} />;
+      return (
+        <input {...field} type={inputType} className={className} {...props} />
+      );
   }
 };
 
