@@ -75,3 +75,116 @@ test("BookingForm component can be submitted by the user", async () => {
     })
   );
 });
+
+test("Writes form values to local storage", async () => {
+  const onSubmit = vi.fn();
+  render(
+    <BookingForm
+      availableTimes={availableTimes}
+      setAvailableTimes={setAvailableTime}
+      onSubmit={onSubmit}
+    />
+  );
+
+  const firstnameInput = screen.getByLabelText("Firstname:");
+  const lastnameInput = screen.getByLabelText("Lastname:");
+  const emailInput = screen.getByLabelText("Email:");
+  const dateInput = screen.getByLabelText("Date:");
+  const timeInput = screen.getByTestId("time-input");
+  const guestsInput = screen.getByTestId("guests-input");
+  const occasionInput = screen.getByTestId("occasion-input");
+  const seatingInputIndoor = screen.getByLabelText("Indoor");
+  const seatingInputOutdoor = screen.getByLabelText("Outdoor");
+  const requestInput = screen.getByLabelText("Special Requests (optional):");
+
+  fireEvent.change(firstnameInput, { target: { value: "John" } });
+  fireEvent.change(lastnameInput, { target: { value: "Doe" } });
+  fireEvent.change(emailInput, { target: { value: "john.doe@example.com" } });
+
+  fireEvent.change(dateInput, { target: { value: "2025-03-05" } });
+
+  fireEvent.click(timeInput);
+  const timeOption = screen.getByRole("option", { name: "17:00" });
+  fireEvent.click(timeOption);
+
+  fireEvent.click(guestsInput);
+  const guestOption = screen.getByText("2");
+  fireEvent.click(guestOption);
+
+  fireEvent.click(occasionInput);
+  const occasionOption = screen.getByText("Birthday");
+  fireEvent.click(occasionOption);
+
+  fireEvent.click(seatingInputIndoor);
+  fireEvent.change(requestInput, { target: { value: "Special request" } });
+
+  await waitFor(() => {
+    expect(localStorage.getItem("reservationForm")).toBe(
+      JSON.stringify({
+        firstname: "John",
+        lastname: "Doe",
+        email: "john.doe@example.com",
+        time: "17:00",
+        date: "2025-03-05",
+        guests: "2",
+        occasion: "Birthday",
+        seating: "indoor",
+        request: "Special request",
+      })
+    );
+  });
+});
+
+test("Reads form values from local storage", async () => {
+  localStorage.setItem(
+    "reservationForm",
+    JSON.stringify({
+      firstname: "John",
+      lastname: "Doe",
+      email: "john.doe@example.com",
+      time: "17:00",
+      date: "2025-03-05",
+      guests: "2",
+      occasion: "Birthday",
+      seating: "indoor",
+      request: "Special request",
+    })
+  );
+
+  const onSubmit = vi.fn();
+  render(
+    <BookingForm
+      availableTimes={availableTimes}
+      setAvailableTimes={setAvailableTime}
+      onSubmit={onSubmit}
+    />
+  );
+
+  const firstnameInput = screen.getByLabelText("Firstname:");
+  const lastnameInput = screen.getByLabelText("Lastname:");
+  const emailInput = screen.getByLabelText("Email:");
+  const dateInput = screen.getByLabelText("Date:");
+  const timeInput = screen.getByTestId("time-input");
+  const guestsInput = screen.getByTestId("guests-input");
+  const occasionInput = screen.getByTestId("occasion-input");
+  const seatingInputIndoor = screen.getByLabelText("Indoor");
+  const seatingInputOutdoor = screen.getByLabelText("Outdoor");
+  const requestInput = screen.getByLabelText("Special Requests (optional):");
+
+  await waitFor(() => {
+    expect(firstnameInput.value).toBe("John");
+    expect(lastnameInput.value).toBe("Doe");
+    expect(emailInput.value).toBe("john.doe@example.com");
+    expect(dateInput.value).toBe("2025-03-05");
+  });
+  await waitFor(() => {
+    expect(timeInput.textContent).toBe("17:00");
+    expect(guestsInput.textContent).toBe("2");
+    expect(occasionInput.textContent).toBe("Birthday");
+  });
+  await waitFor(() => {
+    expect(seatingInputIndoor.checked).toBe(true);
+    expect(seatingInputOutdoor.checked).toBe(false);
+    expect(requestInput.value).toBe("Special request");
+  });
+});
