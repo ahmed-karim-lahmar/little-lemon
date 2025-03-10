@@ -27,11 +27,16 @@ const CustomSelect = ({
   options,
   onChange,
   className,
+  value,
   ...props
 }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
   const inputRef = useRef();
+
+  useEffect(() => {
+    setSelectedValue(options.find((o) => o.value === value) || null);
+  }, [options, value]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {

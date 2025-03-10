@@ -55,7 +55,6 @@ const Input = ({ field, type, className, onBlur, ...props }) => {
               ? "Number of guests"
               : "Occasion"
           }
-          onChange={props.handleChange}
           className={className}
           onBlur={onBlur}
           {...props}

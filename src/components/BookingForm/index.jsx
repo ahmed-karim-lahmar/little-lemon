@@ -7,6 +7,8 @@ import guests from "@assets/guests.svg";
 import occasion from "@assets/occasion.svg";
 import time from "@assets/time.svg";
 
+const FORM_INITIAL_VALUES_KEY = "reservationForm";
+
 const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
   const validationSchema = Yup.object({
     firstname: Yup.string().required("Required"),
@@ -19,6 +21,29 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
     seating: Yup.string().required("Required"),
     request: Yup.string(),
   });
+
+  const loadSavedValues = () => {
+    const savedValues = localStorage.getItem(FORM_INITIAL_VALUES_KEY);
+    return savedValues
+      ? JSON.parse(savedValues)
+      : {
+          firstname: "",
+          lastname: "",
+          email: "",
+          time: "",
+          date: "",
+          guests: "",
+          occasion: "",
+          seating: "",
+          request: "",
+        };
+  };
+
+  const [formValues, setFormValues] = useState(loadSavedValues());
+
+  useEffect(() => {
+    localStorage.setItem(FORM_INITIAL_VALUES_KEY, JSON.stringify(formValues));
+  }, [formValues]);
 
   const guestsOptions = [
     { label: "1", value: "1" },
@@ -49,6 +74,7 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
   const handleDateChange = (e, handleChange) => {
     handleChange(e);
     setAvailableTimes({ type: "updateTimes", payload: e.target.value });
+    setFormValues({ ...formValues, date: e.target.value });
   };
 
   const handleSubmit = (values, setSubmitting) => {
@@ -56,6 +82,7 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
       onSubmit(values);
       setSubmitting(false);
       console.log("Table reservation submitted", values);
+      localStorage.removeItem(FORM_INITIAL_VALUES_KEY);
     }, 1000);
   };
   return (
@@ -64,17 +91,7 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
         Table Reservation
       </h2>
       <Formik
-        initialValues={{
-          firstname: "",
-          lastname: "",
-          email: "",
-          time: "",
-          date: "",
-          guests: "",
-          occasion: "",
-          seating: "",
-          request: "",
-        }}
+        initialValues={loadSavedValues()}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) =>
           handleSubmit(values, setSubmitting)
@@ -83,8 +100,6 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
         {({
           values,
           isValid,
-          errors,
-          touched,
           setFieldValue,
           handleChange,
           handleBlur,
@@ -104,7 +119,10 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                   name="firstname"
                   placeholder="Enter your Firstname"
                   value={values.firstname}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    handleChange(e);
+                    setFormValues({ ...formValues, firstname: e.target.value });
+                  }}
                   onBlur={handleBlur}
                   required
                   aria-required="true"
@@ -128,7 +146,10 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                   name="lastname"
                   placeholder="Enter your Lastname"
                   value={values.lastname}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    handleChange(e);
+                    setFormValues({ ...formValues, lastname: e.target.value });
+                  }}
                   onBlur={handleBlur}
                   required
                   aria-required="true"
@@ -155,7 +176,10 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                   name="email"
                   placeholder="Enter your Email"
                   value={values.email}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    handleChange(e);
+                    setFormValues({ ...formValues, email: e.target.value });
+                  }}
                   onBlur={handleBlur}
                   required
                   aria-required="true"
@@ -214,6 +238,10 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                   value={values.time}
                   onChange={(option) => {
                     setFieldValue("time", option.value);
+                    setFormValues({
+                      ...formValues,
+                      time: option.value,
+                    });
                   }}
                   onBlur={handleBlur}
                   required
@@ -249,6 +277,10 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                   value={values.guests}
                   onChange={(option) => {
                     setFieldValue("guests", option.value);
+                    setFormValues({
+                      ...formValues,
+                      guests: option.value,
+                    });
                   }}
                   onBlur={handleBlur}
                   required
@@ -282,6 +314,10 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                   value={values.occasion}
                   onChange={(option) => {
                     setFieldValue("occasion", option.value);
+                    setFormValues({
+                      ...formValues,
+                      occasion: option.value,
+                    });
                   }}
                   onBlur={handleBlur}
                   aria-required="false"
@@ -301,7 +337,10 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                     name="seating"
                     value="indoor"
                     label="Indoor"
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      handleChange(e);
+                      setFormValues({ ...formValues, seating: e.target.value });
+                    }}
                     onBlur={handleBlur}
                     required
                     aria-required="true"
@@ -314,7 +353,10 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                     name="seating"
                     value="outdoor"
                     label="Outdoor"
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      handleChange(e);
+                      setFormValues({ ...formValues, seating: e.target.value });
+                    }}
                     onBlur={handleBlur}
                     required
                     aria-required="true"
@@ -341,7 +383,10 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                   id="request"
                   name="request"
                   placeholder="Tell us what you need."
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    handleChange(e);
+                    setFormValues({ ...formValues, request: e.target.value });
+                  }}
                 />
               </div>
             </fieldset>
