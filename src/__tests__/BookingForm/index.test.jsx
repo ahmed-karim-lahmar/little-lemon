@@ -1,5 +1,5 @@
 import { test, vi, expect } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import BookingForm from "@components/BookingForm";
 
 const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
@@ -16,7 +16,7 @@ test("Renders the BookingForm heading", () => {
   expect(headingElement).toBeInTheDocument();
 });
 
-test("BookingForm component can be submitted by the user", () => {
+test("BookingForm component can be submitted by the user", async () => {
   const onSubmit = vi.fn();
   render(
     <BookingForm
@@ -30,10 +30,10 @@ test("BookingForm component can be submitted by the user", () => {
   const firstnameInput = screen.getByLabelText("Firstname:");
   const lastnameInput = screen.getByLabelText("Lastname:");
   const emailInput = screen.getByLabelText("Email:");
-  const timeInput = screen.getByLabelText("Time:");
   const dateInput = screen.getByLabelText("Date:");
-  const guestsInput = screen.getByLabelText("Number of Guests:");
-  const occasionInput = screen.getByLabelText("Occasion:");
+  const timeInput = screen.getByTestId("time-input");
+  const guestsInput = screen.getByTestId("guests-input");
+  const occasionInput = screen.getByTestId("occasion-input");
   const seatingInputIndoor = screen.getByLabelText("Indoor");
   const seatingInputOutdoor = screen.getByLabelText("Outdoor");
   const requestInput = screen.getByLabelText("Special Requests (optional):");
@@ -41,15 +41,26 @@ test("BookingForm component can be submitted by the user", () => {
   fireEvent.change(firstnameInput, { target: { value: "John" } });
   fireEvent.change(lastnameInput, { target: { value: "Doe" } });
   fireEvent.change(emailInput, { target: { value: "john.doe@example.com" } });
-  fireEvent.change(timeInput, { target: { value: "17:00" } });
+
   fireEvent.change(dateInput, { target: { value: "2025-03-05" } });
-  fireEvent.change(guestsInput, { target: { value: "2" } });
-  fireEvent.change(occasionInput, { target: { value: "Birthday" } });
+
+  fireEvent.click(timeInput);
+  const timeOption = screen.getByRole("option", { name: "17:00" });
+  fireEvent.click(timeOption);
+
+  fireEvent.click(guestsInput);
+  const guestOption = screen.getByText("2");
+  fireEvent.click(guestOption);
+
+  fireEvent.click(occasionInput);
+  const occasionOption = screen.getByText("Birthday");
+  fireEvent.click(occasionOption);
+
   fireEvent.click(seatingInputIndoor);
   fireEvent.change(requestInput, { target: { value: "Special request" } });
 
-  fireEvent.click(submitBtn);
-  expect(onSubmit).toHaveBeenCalledTimes(1);
+  await waitFor(() => fireEvent.click(submitBtn));
+  await waitFor(() => expect(onSubmit).toHaveBeenCalledTimes(1));
   expect(onSubmit).toHaveBeenCalledWith(
     expect.objectContaining({
       firstname: "John",

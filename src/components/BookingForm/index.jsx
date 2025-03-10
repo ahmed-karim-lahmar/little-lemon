@@ -195,10 +195,16 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                 </div>
               </div>
               <div className={styles.formGroup}>
-                <label className={`section-category`} htmlFor="time">
+                <label
+                  className={`section-category`}
+                  htmlFor="time"
+                  id="time-label"
+                >
                   Time:
                 </label>
                 <Field
+                  data-testid="time-input"
+                  aria-labelledby="time-label"
                   component={FormInput}
                   icon={time}
                   type="time"
@@ -225,10 +231,16 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
 
             <fieldset className={styles.row}>
               <div className={styles.formGroup}>
-                <label className={`section-category`} htmlFor="guests">
+                <label
+                  className={`section-category`}
+                  htmlFor="guests"
+                  id="guests-label"
+                >
                   Number of Guests:
                 </label>
                 <Field
+                  data-testid="guests-input"
+                  aria-labelledby="guests-label"
                   component={FormInput}
                   icon={guests}
                   type="guests"
@@ -252,10 +264,16 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                 </div>
               </div>
               <div className={styles.formGroup}>
-                <label className={`section-category`} htmlFor="occasion">
+                <label
+                  className={`section-category`}
+                  htmlFor="occasion"
+                  id="occasion-label"
+                >
                   Occasion (optional):
                 </label>
                 <Field
+                  data-testid="occasion-input"
+                  aria-labelledby="occasion-label"
                   component={FormInput}
                   icon={occasion}
                   type="occasion"

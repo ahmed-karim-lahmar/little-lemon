@@ -77,6 +77,8 @@ const CustomSelect = ({
       className={`paragraph-text ${styles.dropdownContainer} ${
         selectedValue ? styles.hasSelected : ""
       }`}
+      aria-labelledby={props["aria-labelledby"]}
+      role="combobox"
     >
       <div
         ref={inputRef}
@@ -104,9 +106,10 @@ const CustomSelect = ({
         </div>
       </div>
       {showMenu && (
-        <div className={`${styles.dropdownMenu}`}>
+        <div className={`${styles.dropdownMenu}`} role="listbox">
           {options.map((option, index) => (
             <div
+              role="option"
               onClick={() => onItemClick(option)}
               key={`${option.value}-${index}`}
               className={`${styles.dropdownItem} ${
