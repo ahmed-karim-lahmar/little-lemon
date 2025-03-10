@@ -171,7 +171,7 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                 </label>
                 <Field
                   component={FormInput}
-                  type="text"
+                  type="email"
                   id="email"
                   name="email"
                   placeholder="Enter your Email"
