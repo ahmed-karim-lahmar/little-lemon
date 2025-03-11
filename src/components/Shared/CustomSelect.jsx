@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./CustomSelect.module.css";
 import { useRef } from "react";
 import { useEffect } from "react";
+import { forwardRef } from "react";
 
 const Icon = ({ isOpen }) => {
   return (
@@ -21,18 +22,23 @@ const Icon = ({ isOpen }) => {
   );
 };
 
-const CustomSelect = ({
-  inputIcon,
-  placeHolder,
-  options,
-  onChange,
-  className,
-  value,
-  ...props
-}) => {
+const CustomSelect = forwardRef(function CustomSelect(
+  { inputIcon, placeHolder, options, onChange, className, value, ...props },
+  ref
+) {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
   const inputRef = useRef();
+
+  useEffect(() => {
+    if (ref) {
+      if (typeof ref === "function") {
+        ref(inputRef.current);
+      } else {
+        ref.current = inputRef.current;
+      }
+    }
+  }, [ref]);
 
   useEffect(() => {
     setSelectedValue(options.find((o) => o.value === value) || null);
@@ -86,10 +92,10 @@ const CustomSelect = ({
       role="combobox"
     >
       <div
+        tabIndex={0}
         ref={inputRef}
         onClick={handleInputClick}
         className={styles.dropdownInput}
-        tabIndex={0}
         {...props}
       >
         {inputIcon && (
@@ -128,6 +134,6 @@ const CustomSelect = ({
       )}
     </div>
   );
-};
+});
 
 export default CustomSelect;

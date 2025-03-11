@@ -14,6 +14,7 @@ const Banner = () => {
           We Serve All Holidays
         </h2>
         <Button
+          aria-label="On Click"
           variant="outlined"
           onClick={scrollToForm}
           className={`${styles.scrollToFormBtn}`}

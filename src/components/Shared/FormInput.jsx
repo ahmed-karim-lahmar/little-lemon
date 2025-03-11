@@ -46,6 +46,7 @@ const Input = ({ field, type, className, onBlur, ...props }) => {
     case "occasion":
       return (
         <CustomSelect
+          ref={props.ref}
           inputIcon={props.icon || null}
           options={props.options}
           placeHolder={

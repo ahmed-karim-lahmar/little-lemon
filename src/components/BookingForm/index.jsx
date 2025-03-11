@@ -6,6 +6,7 @@ import styles from "./BookingForm.module.css";
 import guests from "@assets/guests.svg";
 import occasion from "@assets/occasion.svg";
 import time from "@assets/time.svg";
+import { useRef } from "react";
 
 const FORM_INITIAL_VALUES_KEY = "reservationForm";
 
@@ -21,6 +22,16 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
     seating: Yup.string().required("Required"),
     request: Yup.string(),
   });
+
+  const [refs, setRefs] = useState({
+    time: useRef(null),
+    guests: useRef(null),
+    occasion: useRef(null),
+  });
+
+  const handleLabelClick = (field) => {
+    refs[field].current.focus();
+  };
 
   const loadSavedValues = () => {
     const savedValues = localStorage.getItem(FORM_INITIAL_VALUES_KEY);
@@ -223,10 +234,12 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                   className={`section-category`}
                   htmlFor="time"
                   id="time-label"
+                  onClick={() => handleLabelClick("time")}
                 >
                   Time:
                 </label>
                 <Field
+                  ref={refs.time}
                   data-testid="time-input"
                   aria-labelledby="time-label"
                   component={FormInput}
@@ -243,7 +256,7 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                       time: option.value,
                     });
                   }}
-                  onBlur={handleBlur}
+                  onBlur={() => handleBlur({ target: { name: "time" } })}
                   required
                   aria-required="true"
                 />
@@ -263,10 +276,12 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                   className={`section-category`}
                   htmlFor="guests"
                   id="guests-label"
+                  onClick={() => handleLabelClick("guests")}
                 >
                   Number of Guests:
                 </label>
                 <Field
+                  ref={refs.guests}
                   data-testid="guests-input"
                   aria-labelledby="guests-label"
                   component={FormInput}
@@ -282,7 +297,7 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                       guests: option.value,
                     });
                   }}
-                  onBlur={handleBlur}
+                  onBlur={() => handleBlur({ target: { name: "guests" } })}
                   required
                   aria-required="true"
                   options={guestsOptions}
@@ -300,10 +315,12 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
                   className={`section-category`}
                   htmlFor="occasion"
                   id="occasion-label"
+                  onClick={() => handleLabelClick("occasion")}
                 >
                   Occasion (optional):
                 </label>
                 <Field
+                  ref={refs.occasion}
                   data-testid="occasion-input"
                   aria-labelledby="occasion-label"
                   component={FormInput}
@@ -392,6 +409,7 @@ const BookingForm = ({ availableTimes, setAvailableTimes, onSubmit }) => {
             </fieldset>
 
             <Button
+              aria-label="Submit the form"
               data-testid="submit-btn"
               className={styles.submitBtn}
               type="submit"
