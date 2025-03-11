@@ -1,0 +1,37 @@
+.confirmed {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 48px;
+}
+
+.confirmed img {
+  position: absolute;
+  width: 100%;
+  max-width: 200px;
+  z-index: -1;
+}
+
+.largeText {
+  font-size: 4rem;
+  margin-top: 240px;
+  margin-bottom: -16px;
+  color: var(--primary-color-2);
+  text-align: center;
+}
+
+.descriptionText {
+  text-align: center;
+  color: var(--highlight-color-2);
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.homeBtn {
+  margin-top: 48px;
+  width: max(300px, 40%);
+}

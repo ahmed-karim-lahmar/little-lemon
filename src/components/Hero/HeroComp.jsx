@@ -1,8 +1,10 @@
 import Button from "@components/Shared/Button";
 import hero from "@assets/hero-image.jpg";
 import styles from "./HeroComp.module.css";
+import { useNavigate } from "react-router";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <section className={styles.hero}>
       <div className={styles.content}>
@@ -15,7 +17,9 @@ const Hero = () => {
           <span>recipes served with a modern </span>
           twist.
         </p>
-        <Button className={styles.cta}>Reserve a table</Button>
+        <Button className={styles.cta} onClick={() => navigate("/booking")}>
+          Reserve a table
+        </Button>
       </div>
       <div className={styles.content}>
         <img src={hero} alt="Hero Image" className={styles.heroImage} />
