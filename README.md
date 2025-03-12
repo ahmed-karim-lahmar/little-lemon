@@ -64,6 +64,8 @@ This website was created for the **Meta Front-end developer capstone project**. 
 
 ## Live Preview
 
+[Little Lemon](https://moonlit-lily-985ba0.netlify.app/)
+
 ## Technologies
 
 - [React 19](https://react.dev/)
