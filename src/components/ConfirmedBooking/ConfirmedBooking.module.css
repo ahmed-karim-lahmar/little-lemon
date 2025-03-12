@@ -33,5 +33,6 @@
 
 .homeBtn {
   margin-top: 48px;
+  margin-bottom: 64px;
   width: max(300px, 40%);
 }
