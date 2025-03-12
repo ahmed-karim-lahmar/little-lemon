@@ -5,6 +5,7 @@
 ##### Table of Contents
 
 - [Introduction](#introduction)
+- [Design](#Design)
 - [Screenshots](#Screenshots)
 - [Live Preview](#live-preview)
 - [Technologies](#Technologies)
@@ -13,6 +14,10 @@
 ## Introduction
 
 This website was created for the **Meta Front-end developer capstone project**. It showcases a Home page, a Table Reservation page, a Confirmation page and a 404 page for the non implemented pages.
+
+## Design
+
+[Figma Link](https://www.figma.com/design/Byqd6mcbAvyvOgOmOAAueO/Little-Lemon-Capstone?m=auto&t=qsbksqsOq1nOXQ1t-6)
 
 ## Screenshots
 
