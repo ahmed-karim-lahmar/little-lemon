@@ -1,0 +1,17 @@
+.burgerMenu {
+  margin: 0;
+  padding: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.burgerMenu.open {
+  transform: rotate(180deg);
+}
+
+.burgerMenu img {
+  display: block;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
